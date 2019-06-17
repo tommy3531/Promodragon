@@ -1,0 +1,4 @@
+<h1>Edit Business_card</h1>
+
+<%= render 'form', business_card: @business_card %>
+<%= link_to 'Delete', business_card_path(@business_card), :confirm => 'Are you sure?', :method => :delete %>

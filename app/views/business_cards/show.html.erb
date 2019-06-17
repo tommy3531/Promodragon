@@ -1,0 +1,18 @@
+<div class="page-header">
+  <%= link_to business_cards_path, class: 'btn btn-default' do %>
+    All Business_cards
+  <% end %>
+  <%= link_to edit_business_card_path(@business_card), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show business_card</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Imdb:</dt>
+  <dd><%= @business_card.imdb %></dd>
+
+  <dt>Twitter:</dt>
+  <dd><%= @business_card.twitter %></dd>
+
+</dl>

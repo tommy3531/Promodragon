@@ -1,8 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :cards
   
+  resources :business_cards
   namespace :admin do
       resources :users
       resources :announcements
