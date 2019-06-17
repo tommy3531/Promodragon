@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   
-  get 'profiles/index'
+  get 'users/:id/profile', to: 'profiles#show'
   resources :business_cards
   namespace :admin do
       resources :users
