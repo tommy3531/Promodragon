@@ -54,6 +54,7 @@ module Users
         redirect_to new_user_session_path
       else
         @user = create_user
+        resource.build_profile(:user_id => resource_id)
       end
     end
 

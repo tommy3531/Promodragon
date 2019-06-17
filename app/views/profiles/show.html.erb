@@ -1,0 +1,8 @@
+<h1>Profiles</h1>
+
+<h1><%= @user.first_name %></h1>
+<% if @cards.present? %>
+    <% @cards.each do |card| %>
+        <%= card.twitter %>
+    <% end %>
+<% end %>
