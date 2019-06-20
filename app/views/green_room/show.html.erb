@@ -1,3 +1,24 @@
 <h1>GreenRoom#show</h1>
-<p>Find me in app/views/green_room/show.html.erb</p>
-<%= current_user.first_name %>
+<p>Welcome to the green Room to share social links go to your profile and add them</p>
+<div class="page-header">
+  <small>Submitted by <%= current_user.first_name %></small></h1>
+</div>
+
+<div class="btn-group">
+    <% if @cards.present? %>
+        <% @cards.each do |card| %>
+            <%= link_to 'Visit IMDB', card.imdb, class: "btn btn-primary" %>
+            <%= link_to 'Visit Twitter', card.twitter, class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+    <% @cards.each do |card| %>
+        <% if card.user_id == current_user.id -%>
+            <div class="btn-group">
+                <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-default" %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+
+
