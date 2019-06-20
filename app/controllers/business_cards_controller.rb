@@ -4,9 +4,9 @@ class BusinessCardsController < ApplicationController
 
   # GET /business_cards
   # GET /business_cards.json
-  def index
-    @business_cards = BusinessCard.all
-  end
+  # def index
+  #   @business_cards = BusinessCard.all
+  # end
 
   # GET /business_cards/1
   # GET /business_cards/1.json

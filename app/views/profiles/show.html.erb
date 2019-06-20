@@ -23,7 +23,8 @@
     <% @cards.each do |card| %>
         <% if card.user_id == current_user.id -%>
             <div class="btn-group">
-                <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-default" %>
+                <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-primary" %>
+                <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
             </div>
         <% end %>
     <% end %>
