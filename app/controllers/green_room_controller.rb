@@ -4,8 +4,4 @@ class GreenRoomController < ApplicationController
   def show
     @cards = BusinessCard.all
   end
-
-  def find(id)
-    @user = User.find(id)
-  end
 end
