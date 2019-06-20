@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class GreenRoomController < ApplicationController
   before_action :authenticate_user!
 
   def show

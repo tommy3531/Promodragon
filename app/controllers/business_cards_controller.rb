@@ -1,4 +1,5 @@
 class BusinessCardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_business_card, only: [:show, :edit, :update, :destroy]
 
   # GET /business_cards
