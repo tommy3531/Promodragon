@@ -1,18 +1,20 @@
 <h1>GreenRoom#show</h1>
 <p>Welcome to the green Room to share social links go to your profile and add them</p>
 <div class="page-header">
-  <small>Submitted by <%= current_user.first_name %></small></h1>
 </div>
 
 <div class="btn-group">
     <% if @cards.present? %>
         <% @cards.each do |card| %>
-            <%= link_to 'Visit IMDB', card.imdb, class: "btn btn-primary" %>
-            <%= link_to 'Visit Twitter', card.twitter, class: "btn btn-primary" %>
+            <small>Submitted by <%= card.user_id%></small>
+            <div class="btn-group">
+                <%= link_to 'Visit IMDB', card.imdb, class: "btn btn-primary" %>
+                <%= link_to 'Visit Twitter', card.twitter, class: "btn btn-primary" %>
+            </div>
         <% end %>
     <% end %>
     <% @cards.each do |card| %>
-        <% if card.user_id == current_user.id -%>
+        <% if card.user_id == current_user.id %>
             <div class="btn-group">
                 <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-default" %>
             </div>

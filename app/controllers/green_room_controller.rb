@@ -2,7 +2,10 @@ class GreenRoomController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = current_user
     @cards = BusinessCard.all
+  end
+
+  def find(id)
+    @user = User.find(id)
   end
 end
