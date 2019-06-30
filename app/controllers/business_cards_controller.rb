@@ -1,29 +1,17 @@
 class BusinessCardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_business_card, only: [:show, :edit, :update, :destroy]
-
-  # GET /business_cards
-  # GET /business_cards.json
-  # def index
-  #   @business_cards = BusinessCard.all
-  # end
-
-  # GET /business_cards/1
-  # GET /business_cards/1.json
+  
   def show
   end
 
-  # GET /business_cards/new
   def new
     @business_card = current_user.business_cards.build
   end
 
-  # GET /business_cards/1/edit
   def edit
   end
 
-  # POST /business_cards
-  # POST /business_cards.json
   def create
     @business_card = current_user.business_cards.build(business_card_params)
 
@@ -38,8 +26,6 @@ class BusinessCardsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /business_cards/1
-  # PATCH/PUT /business_cards/1.json
   def update
     respond_to do |format|
       if @business_card.update(business_card_params)
@@ -52,8 +38,6 @@ class BusinessCardsController < ApplicationController
     end
   end
 
-  # DELETE /business_cards/1
-  # DELETE /business_cards/1.json
   def destroy
     @business_card.destroy
     respond_to do |format|
@@ -63,12 +47,11 @@ class BusinessCardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_business_card
       @business_card = BusinessCard.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def business_card_params
       params.require(:business_card).permit(:imdb, :twitter, :user_id)
     end
