@@ -1,24 +1,40 @@
 <h1>GreenRoom</h1>
 <p>Welcome to the green Room to share social links go to your profile and add them</p>
 
-<div class="page-header">
+<div class="container">
+
     <% if @cards.present? %>
         <% @cards.each do |card| %>
-            <div class="form-group">
-                <small>Submitted by <%= card.user.first_name%></small>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+
+                    <div class="card hovercard">
+                        <div class="cardheader">
+                        </div>
+                        <div class="avatar">
+                            <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                        </div>
+                        <div class="info">
+                            <small>Submitted by <%= card.user.first_name%></small>
+                        </div>
+                        <div class="bottom">
+                            <div class="btn-group">
+                                <%= link_to '', card.twitter, class: "fab fa-twitter" %>
+                                <%= link_to '', card.imdb, class: "fab fa-imdb" %>
+                            </div>
+                            <% if card.user_id == current_user.id %>
+                                <div class="btn-group">
+                                    <%= link_to '', edit_business_card_path(card.id), class: "fas fa-edit" %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="btn-group">
-                <%= link_to 'Visit IMDB', card.imdb, class: "btn btn-primary" %>
-                <%= link_to 'Visit Twitter', card.twitter, class: "btn btn-primary" %>
-            </div>
-            <% if card.user_id == current_user.id %>
-            <div class="btn-group">
-                <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-default" %>
-            </div>
-            <% end %>
         <% end %>
     <% end %>
 </div>
+
 
 
 
