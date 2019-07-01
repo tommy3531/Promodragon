@@ -1,26 +1,32 @@
-<h1>Profiles</h1>
+<div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>
+        <div class="fb-profile-text">
+            <h1>FirstName: <%= current_user.first_name %></h1>
+        </div>
+    </div>
 
-<h1><%= @user.first_name %></h1>
-
-
-<div class="page-header">
-  <small>Submitted by <%= current_user.first_name %></small></h1>
-</div>
-
-<div class="buttons">
-    <div class="btn-group">
-        <% if @cards.present? %>
-            <% @cards.each do |card| %>
-                <%= link_to '', card.twitter, class: "fab fa-twitter" %>
-                <%= link_to '', card.imdb, class: "fab fa-imdb btn-warning" %>
+    <div class="buttons">
+        <div class="btn-group">
+            <% if @cards.present? %>
+                <% @cards.each do |card| %>
+                    <div class="container">
+                        <%= link_to '', card.twitter, class: "fab fa-twitter" %>
+                    </div>
+                    <div class="container">
+                        <%= link_to '', card.imdb, class: "fab fa-imdb btn-warning" %>
+                    </div>
+                <% end %>
+                <% else %>
+                    <div class="col-sm-6 text-right">
+                        <%= link_to new_business_card_path, class: 'btn btn-primary btn-lg' do %>
+                            Add New Business card
+                        <% end %>
+                    </div>
             <% end %>
-            <% else %>
-                <div class="col-sm-6 text-right">
-                    <%= link_to new_business_card_path, class: 'btn btn-primary btn-lg' do %>
-                        Add New Business card
-                    <% end %>
-                </div>
-        <% end %>
+        </div>
+    </div>
         <% @cards.each do |card| %>
             <% if card.user_id == current_user.id -%>
                 <div class="btn-group">
@@ -29,6 +35,5 @@
                 </div>
             <% end %>
         <% end %>
-    </div>
 </div>
 
