@@ -1,20 +1,7 @@
-
-
-
 <div class="row">
   <div class="col-sm-6">
     <h1>Business Cards</h1>
   </div>
-
-  <% if @business_cards.empty? %>
-    <div class="col-sm-6 text-right">
-      <%= link_to new_business_card_path, class: 'btn btn-primary' do %>
-        Add New Business card
-      <% end %>
-    </div>
-  <% else %>
-  <% end %>
-  
 </div>
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
@@ -25,13 +12,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @business_cards.each do |business_card| %>
-        <%= content_tag :tr, id: dom_id(business_card), class: dom_class(business_card) do %>
-            <td><%= business_card.imdb %></td>
-            <td><%= business_card.twitter %></td>          
-            <td><%= link_to 'Show', business_card %></td>
+        <% if @business_cards.nil? %>
+            <td><%= link_to 'Show', business_cards_path %></td>
+          <% else %>
+          <% @business_cards.each do |business_card| %>
+            <%= content_tag :tr, id: dom_id(business_card), class: dom_class(business_card) do %>
+                <td><%= business_card.imdb %></td>
+                <td><%= business_card.twitter %></td>          
+                <td><%= link_to 'Show', business_card %></td>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
     </tbody>
   </table>
 </div>

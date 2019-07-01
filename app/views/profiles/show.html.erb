@@ -7,26 +7,28 @@
   <small>Submitted by <%= current_user.first_name %></small></h1>
 </div>
 
-<div class="btn-group">
-    <% if @cards.present? %>
+<div class="buttons">
+    <div class="btn-group">
+        <% if @cards.present? %>
+            <% @cards.each do |card| %>
+                <%= link_to '', card.twitter, class: "fab fa-twitter" %>
+                <%= link_to '', card.imdb, class: "fab fa-imdb btn-warning" %>
+            <% end %>
+            <% else %>
+                <div class="col-sm-6 text-right">
+                    <%= link_to new_business_card_path, class: 'btn btn-primary' do %>
+                        Add New Business card
+                    <% end %>
+                </div>
+        <% end %>
         <% @cards.each do |card| %>
-            <%= link_to 'Visit IMDB', card.imdb, class: "btn btn-primary" %>
-            <%= link_to 'Visit Twitter', card.twitter, class: "btn btn-primary" %>
+            <% if card.user_id == current_user.id -%>
+                <div class="btn-group">
+                    <%= link_to 'Edit', edit_business_card_path(card.id), class: "fas fa-edit" %>
+                    <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
+                </div>
+            <% end %>
         <% end %>
-        <% else %>
-            <div class="col-sm-6 text-right">
-                <%= link_to new_business_card_path, class: 'btn btn-primary' do %>
-                    Add New Business card
-                <% end %>
-            </div>
-        <% end %>
-    <% @cards.each do |card| %>
-        <% if card.user_id == current_user.id -%>
-            <div class="btn-group">
-                <%= link_to 'Edit', edit_business_card_path(card.id), class: "btn btn-primary" %>
-                <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
-            </div>
-        <% end %>
-    <% end %>
+    </div>
 </div>
 

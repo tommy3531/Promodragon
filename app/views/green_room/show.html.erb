@@ -20,7 +20,7 @@
                         <div class="bottom">
                             <div class="btn-group">
                                 <%= link_to '', card.twitter, class: "fab fa-twitter" %>
-                                <%= link_to '', card.imdb, class: "fab fa-imdb" %>
+                                <%= link_to '', card.imdb, class: "fab fa-imdb btn-warning" %>
                             </div>
                             <% if card.user_id == current_user.id %>
                                 <div class="btn-group">
