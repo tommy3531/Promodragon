@@ -4,11 +4,11 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :imdb %>
-    <%= f.input :twitter %>
+    <%= f.input :imdb ,label_html: {class: "fab fa-imdb fa-2x"} %>
+    <%= f.input :twitter ,label_html: {class: "fab fa-twitter fa-2x"} %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <div class="form-group">
+    <%= f.submit "Update Social", class: "btn-primary" %>
+    </div>
 <% end %>

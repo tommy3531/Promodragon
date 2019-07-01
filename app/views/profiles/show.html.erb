@@ -29,9 +29,11 @@
     </div>
         <% @cards.each do |card| %>
             <% if card.user_id == current_user.id -%>
-                <div class="btn-group">
-                    <%= link_to 'Edit', edit_business_card_path(card.id), class: "fas fa-edit" %>
-                    <%= link_to 'Destroy', @card, method: :delete, data: { confirm: 'Are you sure?' }, class: "fas fa-trash" %>
+                <div class="container">
+                    <%= link_to 'Edit Social', edit_business_card_path(card.id), class: "fas fa-edit" %>
+                </div>
+                <div class="container">
+                <%= link_to 'Social Delete', business_card_path(card), class: "fas fa-trash" %>
                 </div>
             <% end %>
         <% end %>
