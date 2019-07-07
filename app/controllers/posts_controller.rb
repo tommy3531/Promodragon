@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @post = Post.all
   end
 
   # GET /posts/1
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @posts = current_user.posts.build
+    @post = current_user.posts.build
   end
 
   # GET /posts/1/edit
@@ -25,15 +25,15 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @posts = current_user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
-      if @posts.save
-        format.html { redirect_to @posts, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @posts }
+      if @post.save
+        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
-        format.json { render json: @posts.errors, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end

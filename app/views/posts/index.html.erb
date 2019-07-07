@@ -28,15 +28,15 @@
     </thead>
 
     <tbody>
-      <% @posts.each do |post| %>
-        <%= content_tag :tr, id: dom_id(post), class: dom_class(post) do %>
+      <% @post.each do |item| %>
+        <%= content_tag :tr, id: dom_id(item), class: dom_class(item) do %>
           
 
-                      <td><%= post.title %></td>
-                      <td><%= post.description %></td>
+                      <td><%= item.title %></td>
+                      <td><%= item.description %></td>
           
           
-            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Show', item %></td>
           
         <% end %>
       <% end %>
