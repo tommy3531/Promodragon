@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   
+  get 'forum/index'
+  resources :posts
   get 'green_room/show'
   get 'users/:id/profile', to: 'profiles#show'
   resources :business_cards
