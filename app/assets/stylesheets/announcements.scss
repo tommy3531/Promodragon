@@ -1,6 +1,6 @@
 .announcement {
   strong {
-    color: $gray-700;
+    color: gray;
     font-weight: 900;
   }
 }
@@ -12,8 +12,8 @@
   -moz-background-clip: padding-box;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: $red;
-  content: '';
+  background: red;
+  content: "";
   display: inline-block;
   height: 8px;
   width: 8px;
