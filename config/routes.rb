@@ -3,10 +3,12 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   
   get 'forum/index'
-  resources :posts
   get 'green_room/show'
   get 'users/:id/profile', to: 'profiles#show'
   resources :business_cards
+  resources :comments
+  resources :posts
+
   namespace :admin do
       resources :users
       resources :announcements
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
   end
+
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,6 +5,32 @@
 <% end %>
 </div>
 <% @post.each do |item| %>
-<h1> <%= item.title %> </h1>
-<h1> <%= item.description %></h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+          <div class="card card-white post">
+              <div class="post-heading">
+                  <div class="float-left image">
+                  <%= image_tag user_avatar(item.user, 50), class: "rounded-circle" %>
+                  </div>
+                  <div class="float-left meta">
+                      <div class="title h5">
+                          <a href="#"><b><%= item.user.first_name %></b></a>
+                          made a post.
+                      </div>
+                      <h6 class="text-muted time">1 minute ago</h6>
+                  </div>
+              </div> 
+              <div class="post-description"> 
+                  <p><%= item.description %></p>
+              </div>
+              <div class="col-sm-6 text-right">
+              <%= link_to new_comment_path, class: 'btn btn-primary' do %>
+                Add New Comment
+              <% end %>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 <% end %>
