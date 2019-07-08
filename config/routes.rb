@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get 'green_room/show'
   get 'users/:id/profile', to: 'profiles#show'
   resources :business_cards
-  resources :comments
-  resources :posts
+  resources :comments do
+    resources :posts
+  end
 
   namespace :admin do
       resources :users
@@ -30,6 +31,11 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
   end
+
+  resources :posts do
+    resource :comments
+  end
+  
 
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
