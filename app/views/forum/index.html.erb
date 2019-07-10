@@ -36,4 +36,30 @@
       </div>
     </div>
   </div>
+  <% item.comments.each do |comment| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+          <div class="card card-white post">
+              <div class="post-heading">
+                  <div class="float-left image">
+                  <%= image_tag user_avatar(item.user, 50), class: "rounded-circle" %>
+                  </div>
+                  <div class="float-left meta">
+                      <div class="content h5">
+                          <a href="#"><b><%= item.user.first_name %></b></a>
+                          made a post.
+                      </div>
+                  </div>
+              </div> 
+              <div class="post-description"> 
+                  <p><%= comment.content %></p>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
 <% end %>
