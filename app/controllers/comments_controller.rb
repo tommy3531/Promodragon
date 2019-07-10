@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.create!(comment_params)
 		@comment.post_id = params[:post_id]
 		if @comment.save
-			redirect_to post_comment_path(@post, @comment)
+			redirect_to forum_index_path
+			# redirect_to post_comment_path(@post, @comment)
 		else
 			flash.now[:danger] = "error"
 		end

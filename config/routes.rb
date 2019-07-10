@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'posts/:id/comments', to: 'comments#show'
   resources :business_cards
 
-
   namespace :admin do
       resources :users
       resources :announcements
