@@ -25,15 +25,11 @@
                   <p><%= item.description %></p>
               </div>
               <div class="col-sm-6 text-right">
-                <%= link_to new_post_comments_path(item.id), class: 'btn btn-primary' do %>
+                <%= link_to new_post_comment_path(item.id), class: 'btn btn-primary' do %>
                   Add New Comment
                 <% end %>
               </div>
-              <div class="col-sm-6 text-right">
-                  <% item.comments.each do |comment| %>
-                    <h1><%= comment.content %></h1>
-                  <% end %>
-                </div>
+
             </div>
           </div>
           </div>

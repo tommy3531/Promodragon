@@ -6,9 +6,7 @@ Rails.application.routes.draw do
   get 'green_room/show'
   get 'users/:id/profile', to: 'profiles#show'
   resources :business_cards
-  resources :comments do
-    resources :posts
-  end
+
 
   namespace :admin do
       resources :users
@@ -33,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resource :comments
+    resources :comments
   end
   
 
