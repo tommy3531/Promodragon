@@ -1,65 +1,164 @@
-<h1>Welecome to the forum's index page</h1>
-<div class="col-sm-8 text-right">
-<%= link_to new_post_path, class: 'btn btn-primary' do %>
-  Add New Post
-<% end %>
-</div>
-<% @post.each do |item| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-8">
-          <div class="card card-white post">
-              <div class="post-heading">
-                  <div class="float-left image">
-                  <%= image_tag user_avatar(item.user, 50), class: "rounded-circle" %>
-                  </div>
-                  <div class="float-left meta">
-                      <div class="title h5">
-                          <a href="#"><b><%= item.user.first_name %></b></a>
-                          made a post.
-                      </div>
-                      <h6 class="text-muted time">1 minute ago</h6>
-                  </div>
-              </div> 
-              <div class="post-description"> 
-                  <p><%= item.description %></p>
-              </div>
-              <div class="col-sm-6 text-right">
-                <%= link_to new_post_comment_path(item.id), class: 'btn btn-primary' do %>
-                  Add New Comment
-                <% end %>
-              </div>
+
+<!----------------------------------------------------------------->
+        
+<nav class="navbar navbar-light bg-white">
+        <a href="#" class="navbar-brand">Bootsbook</a>
+        <form class="form-inline">
+            <div class="input-group">
+                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </nav>
+
+
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="h5">@LeeCross</div>
+                        <div class="h7 text-muted">Fullname : Miracles Lee Cross</div>
+                        <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
+                            etc.
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="h6 text-muted">Followers</div>
+                            <div class="h5">5.2342</div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="h6 text-muted">Following</div>
+                            <div class="h5">6758</div>
+                        </li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 gedf-main">
+
+                <!--- \\\\\\\Post-->
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                              <%= link_to new_post_path, class: 'btn btn-primary' do %>
+                                Add New Post
+                              <% end %>                         
+                            </div>
+
+                            <!--- If user is owner of post show this --->
+                            <div class="btn-group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <i class="fa fa-globe"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post /////-->
+
+                <!--- \\\\\\\Post-->
+                <% @post.each do |item| %>
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="mr-2">
+                                  <%= image_tag user_avatar(item.user, 50), class: "rounded-circle" %>
+                                </div>
+                                <div class="ml-2">
+                                    <div class="h5 m-0">@<%= item.user.first_name %></div>
+                                    <div class="h7 text-muted"><%= item.user.first_name %><%= item.user.last_name %></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                                        <div class="h6 dropdown-header">Configuration</div>
+                                        <a class="dropdown-item" href="#">Save</a>
+                                        <a class="dropdown-item" href="#">Hide</a>
+                                        <a class="dropdown-item" href="#">Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <a class="card-link" href="#">
+                            <h5 class="card-title"><%= item.title %></h5>
+                        </a>
+
+                        <p class="card-text">
+                          <%= item.description %>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+                        <%= link_to new_post_comment_path(item.id), class: 'btn btn-primary' do %>
+                          <i class="fa fa-comment"></i> Comment</a>                        
+                        <% end %>
+                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+                    </div>
+                </div>
+                <% item.comments.each do |comment| %>
+
+                <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                          <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
+                        </div>
+                        <div class="ml-2">
+                            <div class="h5 m-0">@<%= comment.user.first_name %></div>
+                            <div class="h7 text-muted"><%= comment.user.first_name %><%= comment.user.last_name %></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="dropdown">
+                            <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                                <div class="h6 dropdown-header">Configuration</div>
+                                <a class="dropdown-item" href="#">Save</a>
+                                <a class="dropdown-item" href="#">Hide</a>
+                                <a class="dropdown-item" href="#">Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-          </div>
-          </div>
-      </div>
-    </div>
-  </div>
-  <% item.comments.each do |comment| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-8">
-          <div class="card card-white post">
-              <div class="post-heading">
-                  <div class="float-left image">
-                  <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
-                  </div>
-                  <div class="float-left meta">
-                      <div class="content h5">
-                          <a href="#"><b><%= comment.user.first_name %></b></a>
-                          made a comment.
-                      </div>
-                  </div>
-              </div> 
-              <div class="post-description"> 
-                  <p><%= comment.content %></p>
-              </div>
+            <div class="card-body">
+                <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+
+                <p class="card-text">
+                  <%= comment.content %>
+                </p>
             </div>
-          </div>
-          </div>
-      </div>
+            <% end %>
+
+                <% end %>
+            </div>
+        </div>
     </div>
   </div>
-  <% end %>
-<% end %>
+</div>
